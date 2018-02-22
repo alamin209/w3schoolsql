@@ -39,12 +39,18 @@ if (isset($_POST['submit'])) {
 
   $insrt="INSERT  into  w3school(name,email,password,country) values('$n','$e','$p','$c')";
   $insetadd=mysqli_query($con,$insrt);
-  if ($insetadd==true) {
-    echo "good job";
+   if ($insetadd==true) {
+      echo ("<script> alert ('good job');
+
+
+ window.location.href='http://localhost/w3shool/w3schoolsql/sqlw3schoool/insertrow.php'; </script>");
+
   }
 else  {
     echo 'nothing to deon yet';
   }
+
+
 }
 
 // else  {
