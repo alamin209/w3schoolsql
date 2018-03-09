@@ -57,22 +57,31 @@ else  {
 //   echo "somthing might be wrong";
 // }
 
-// $all="SELECT * FROM  w3school where name='ALAMIN'";
-// $all_run=mysqli_query($con,$all);
+ $all="SELECT * FROM  w3school";
+ $all_run=mysqli_query($con,$all);
 
-// if (mysqli_num_rows($all_run) > 0) 
-// {
-//   while ($result=mysqli_fetch_assoc($all_run))
+ if (mysqli_num_rows($all_run) > 0)
+ {
+   while ($result=mysqli_fetch_assoc($all_run))
 
-//   {
+   {
 //     echo "ID".  $result['id']."name".$result['name']."password".
-//     $result['password'];
-//   }
-// }
-// else
-// {
-//   echo "you do not left any row";
-// }
+//     $result['password'];mysqli_close($con);
+
+       echo " <table>
+  <th>NAme</th>
+   <th>CountryName</th>
+   <th></th>
+  
+  
+  </table> ";
+
+   }
+ }
+ else
+ {
+   echo "you do not left any row";
+ }
 
 /*
 while ($row_production=mysqli_fetch_array($all_run))
@@ -93,7 +102,11 @@ while ($row_production=mysqli_fetch_array($all_run))
      ";
   } 
   */
+
 ?>
+
+
+
 
 
 
