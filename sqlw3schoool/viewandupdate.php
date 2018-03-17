@@ -8,45 +8,7 @@ if(mysqli_connect_error())
 }
 ?>
 
-<?php
- $all ="Select * from  w3school";
- $all_run=mysqli_query($con,$all);
- if (mysqli_num_rows($all_run) > 0)
-   {
-    while ($result=mysqli_fetch_assoc($all_run))
-    {   ?>
 
-
-
- <table>
-     <tr>
-         <th>
-
-             Name
-         </th>
-         <th>
-             Email
-         </th>
-         <th>
-             Password
-         </th>
-
-         <th>
-             Country
-         </th>
-     </tr>
-
-     <tr>
-         <td> <?php echo $result['name'] ?></td>
-         <td><?php echo $result['email'] ?> </td>
-         <td><?php echo $result['password']  ?></td>
-         <td><?php echo $result['country']  ?></td>
-         <td></td>
-
-     </tr>
-
-  <?php  } } ?>
- </table>
 <?php
 
 $all="SELECT * FROM  w3school ";
@@ -81,18 +43,15 @@ while ($result=mysqli_fetch_assoc($all_run))
 if (isset($_POST['submit']))
 {
     $id=$_POST['id'];
-    print_r($id);
     $name=$_POST['name'];
-    print_r($name);
     $email=$_POST['email'];
-    print_r($email);
     $pasword=$_POST['pass'];
     $country=$_POST['country'];
 
 
 }
 
-print_r($name);
+
 $con=mysqli_connect("localhost","root","","w3school");
 $upadet ="UPDATE w3school  SET name='$name', email= '$email',password='$pasword',country='$country' WHERE  id='$id'";
 $run=mysqli_query($con,$upadet);

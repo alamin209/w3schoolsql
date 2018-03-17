@@ -1,0 +1,193 @@
+<?php
+$con=mysqli_connect("localhost","root","","w3school");
+
+if(mysqli_connect_error())
+{
+    echo "this is connection error";
+}
+?>
+
+<?php
+$all= "SELECT  * FROM w3school";
+$all_run=mysqli_query($con,$all);
+ if (mysqli_num_rows($all_run) > 0)
+ {
+    while ($result=mysqli_fetch_assoc($all_run))
+    {   ?>
+
+
+
+        <table>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Password
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                PRICE
+            </th>
+            <th></th>
+        </tr>
+
+        <tr>
+            <td> <?php echo $result['name'] ?></td>
+            <td><?php echo $result['email'] ?> </td>
+            <td><?php echo $result['password']  ?></td>
+            <td><?php echo $result['country']  ?></td>
+            <td>
+            <?php echo $result['price'] ?>
+            </td>
+
+        </tr>
+
+    <?php  } } ?>
+            ////sreach cration in php
+            <form action="Serach.php"  method="post">
+           <input type="text" placeholder="Search by anaothing " name="searches">
+                <input type="submit" name="search" value="serch ">
+            </form>
+
+
+<?php
+
+    $all="SELECT MIN(`price`) as prices FROM w3school";
+            $all_run=mysqli_query($con,$all);
+            if (mysqli_num_rows($all_run) > 0)
+            {
+            while ($result=mysqli_fetch_assoc($all_run))
+            {   ?>
+
+
+
+            <table>
+                <tr>
+                    <th>
+                       Minimam  PRICE
+                    </th>
+                </tr>
+
+                <tr>
+                    <td>
+                        <?php echo $result['prices'] ?>
+                    </td>
+
+                </tr>
+
+                <?php  } } ?>
+<?php
+
+
+                $all="SELECT MAX(`price`) as MAXprices FROM w3school";
+                $all_run=mysqli_query($con,$all);
+                if (mysqli_num_rows($all_run) > 0)
+                {
+                while ($result=mysqli_fetch_assoc($all_run))
+                {   ?>
+
+
+
+                <table>
+                    <tr>
+                        <th>
+                            Maximum  PRICE
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <?php echo $result['MAXprices'] ?>
+                        </td>
+
+                    </tr>
+
+                    <?php  } } ?>
+
+<?php
+                    $all="SELECT COUNT(`id`) as allname FROM w3school";
+                    $all_run=mysqli_query($con,$all);
+                    if (mysqli_num_rows($all_run) > 0)
+                    {
+                    while ($result=mysqli_fetch_assoc($all_run))
+                    {   ?>
+
+
+
+                    <table>
+                        <tr>
+                            <th>
+                                  Total Insert Data
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <?php echo $result['allname'] ?>
+                            </td>
+
+                        </tr>
+
+                        <?php  } } ?>
+
+
+                        <?php
+
+                        $all="SELECT AVG(`price`) as  avriageprice  FROM w3school";
+                        $all_run=mysqli_query($con,$all);
+                        if (mysqli_num_rows($all_run) > 0)
+                        {
+                        while ($result=mysqli_fetch_assoc($all_run))
+                        {   ?>
+
+
+
+                        <table>
+                            <tr>
+                                <th>
+                              Avarage Price
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <?php echo $result['avriageprice'] ?>
+                                </td>
+                            </tr>
+
+                            <?php  } } ?>
+<?php
+
+                            $all="SELECT SUM(`price`) as  Total  FROM w3school";
+                            $all_run=mysqli_query($con,$all);
+                            if (mysqli_num_rows($all_run) > 0)
+                            {
+                            while ($result=mysqli_fetch_assoc($all_run))
+                            {   ?>
+
+
+
+                            <table>
+                                <tr>
+                                    <th>
+                                        Total Sum of the Price
+                                    </th>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <?php echo $result['Total'] ?>
+                                    </td>
+                                </tr>
+
+                                <?php  } } ?>
+
+
+
+                </table>
