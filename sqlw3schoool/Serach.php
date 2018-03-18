@@ -18,9 +18,28 @@ if (!$con) {
 if (isset($_POST['searches'])) {
 
 $search = $_POST['searches'];
-print_r($search);
+$sendserach=$_POST['sendserach'];
+print_r($sendserach);
+/////////////////////////multipulle serch or  IN Serch exmple////////////////////////////////////////////////
+///
+///
+///
+///
+///
+///
+///
+/// first is without using in and next is using in opratior /// ///
+///
+///
+///
+
 
 $serch= "SELECT * FROM w3school WHERE `name` LIKE '%".$search."%'";
+///solve  here because i take in put not search % i reemove it and it work fine
+//$serch= "SELECT * FROM w3school WHERE `name` IN  ('$search','$sendserach')";
+
+
+
 $all_run=mysqli_query( $con,$serch);
 
 
@@ -61,6 +80,11 @@ while ($result=mysqli_fetch_assoc($all_run))
         </td>
 
     </tr>
-        <?php  } }   ?>
+        <?php  } }
+    else   { ?>
+     <?php   echo "Nothnihg Found";   ?>
+
+   <?php  }  ?>
+
     <?php  } ?>
 

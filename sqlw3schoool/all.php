@@ -51,7 +51,9 @@ $all_run=mysqli_query($con,$all);
     <?php  } } ?>
             ////sreach cration in php
             <form action="Serach.php"  method="post">
-           <input type="text" placeholder="Search by anaothing " name="searches">
+
+                <input type="text" placeholder="Search by anaothing " name="searches">
+                <input type="text" placeholder="Search by anaothing " name="sendserach">
                 <input type="submit" name="search" value="serch ">
             </form>
 
