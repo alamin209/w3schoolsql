@@ -17,7 +17,7 @@ $all_run=mysqli_query($con,$all);
 
 
 
-        <table>
+        <table border="1px">
         <tr>
             <th>
                 Name
@@ -47,6 +47,7 @@ $all_run=mysqli_query($con,$all);
             </td>
 
         </tr>
+        </table>
 
     <?php  } } ?>
             ////sreach cration in php
@@ -56,9 +57,16 @@ $all_run=mysqli_query($con,$all);
                 <input type="text" placeholder="Search by anaothing " name="sendserach">
                 <input type="submit" name="search" value="serch ">
             </form>
+            </br></br></br></br></br></br>
+//////////////////////betweeen example here///////////////////////////////////////////////////////
+            <form action="Serach.php"  method="post">
 
+                <input type="date" placeholder="Search by anaothing " name="startdate">
+                <input type="date" placeholder="Search by anaothing " name="enddate">
+                <input type="submit" name="datepost" value="serch ">
+            </form>
 
-<?php
+            <?php
 
     $all="SELECT MIN(`price`) as prices FROM w3school";
             $all_run=mysqli_query($con,$all);
@@ -173,8 +181,6 @@ $all_run=mysqli_query($con,$all);
                             while ($result=mysqli_fetch_assoc($all_run))
                             {   ?>
 
-
-
                             <table>
                                 <tr>
                                     <th>
@@ -189,7 +195,51 @@ $all_run=mysqli_query($con,$all);
                                 </tr>
 
                                 <?php  } } ?>
-
-
-
                 </table>
+/////////////////////////////////  alisisssssssssssssssss example /////////////////////////////////////////
+      <?php
+//     particuler one colume  value
+//      $all= "SELECT `id` AS ID, `name` AS Customer FROM w3school";
+//      if the colume name has  a apace then use [give a name and another  like anam name]
+// multipule colume selction from table
+//      $all= "SELECT `id` +','+ 'name'+ 'wmail'+ ',' + country + ',' + price as totaluserdetail FROM w3school";
+//      but  it was not working so i add diffent thnimgs here
+      $all ="SELECT  id,  CONCAT(`name`,', ',`email`) AS cols  
+    FROM w3school ORDER BY cols";
+
+      $all_run=mysqli_query($con,$all);
+                            if (mysqli_num_rows($all_run) > 0)
+                            {
+                            while ($result=mysqli_fetch_assoc($all_run))
+                            {   ?>
+
+                                <table border="1px">
+                                    <tr>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            Details
+                                        </th>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td> <?php echo $result['id'] ?></td>
+                                        <td><?php echo $result['cols'] ?> </td>
+
+                                        </td>
+
+                                    </tr>
+                                </table>
+
+
+                            <?php  } } ?>
+                            ////sreach cration in php
+                            <form action="Serach.php"  method="post">
+
+                                <input type="text" placeholder="Search by anaothing " name="searches">
+                                <input type="text" placeholder="Search by anaothing " name="sendserach">
+                                <input type="submit" name="search" value="serch ">
+                            </form>
+                            </br></br></br></br></br></br>
